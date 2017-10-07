@@ -14,7 +14,7 @@ public class WorkDay
     //[SerializeField] bool addsJob;
     [SerializeField] int numJobs = 2;
 
-    public int GetNumJobs()
+    public int GetJobCount()
     {
         return numJobs;
     }
@@ -27,7 +27,10 @@ public class WorkDay
         return todayJobs[index];
     }
 
-    public void AddAJob() { numJobs++; }
+    public void AddAJob()
+    {
+        numJobs++;
+    }
 
     // TODO : CHECK TO NOT HAVE THE SAME JOB MULTIPLE TIMES
     public void SelectJobs()
@@ -37,12 +40,12 @@ public class WorkDay
         List<int> randomPick = new List<int>();
         int rand;
 
-        for (int i=0; i<numJobs; i++)
+        for (int i = 0; i < numJobs; i++)
         {
             // get a random index
             do
             {
-                rand = (int)Random.Range(0.0f, GameController.GetNumJobs());
+                rand = (int)Random.Range(0.0f, GameController.GetJobCount());
             }
             while (randomPick.Contains(rand));
             randomPick.Add(rand);
@@ -73,12 +76,12 @@ public class WorkDay
         int rand;
 
         int numPower = (int)Random.Range(minimumPowerCount, maximumPowerCount + 1);
-        for (int i=0; i<numPower; i++)
+        for (int i = 0; i < numPower; i++)
         {
             // get a random index
             do
             {
-                rand = (int)Random.Range(0.0f, GameController.GetNumPowers());
+                rand = (int)Random.Range(0.0f, GameController.GetPowerCount());
             }
             while (randomPick.Contains(rand));
             randomPick.Add(rand);
@@ -94,7 +97,7 @@ public class WorkDay
             // get a random index
             do
             {
-                rand = (int)Random.Range(0.0f, GameController.GetNumFears());
+                rand = (int)Random.Range(0.0f, GameController.GetFearCount());
             }
             while (randomPick.Contains(rand));
             randomPick.Add(rand);
@@ -102,21 +105,23 @@ public class WorkDay
             currentHero.AddFear(GameController.GetFearByIndex(rand));
         }
 
-        /// TO REMVOVE
+        Log(currentHero);
+
+        return currentHero;
+    }
+
+    static void Log(SuperHero currentHero)
+    {
         string powersString = "";
         foreach (var p in currentHero.GetPowers())
         {
             powersString += " " + p.Power;
         }
-
         string fearsString = "";
         foreach (var fear in currentHero.GetFears())
         {
             fearsString += " " + fear.FearName;
         }
-
         Debug.Log("Un nouveau héros se présente à vous, ses pouvoirs sont : " + powersString + ", ses peurs : " + fearsString);
-
-        return currentHero;
     }
 }
