@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown("z"))
         {
             print("z");
+            // currentDay.jobToKey.get("z").isCompatible(currentSuperHero.powers, currentSuperHero.fears);
         }
         if (Input.GetKeyDown("q"))
         {
