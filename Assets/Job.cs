@@ -9,8 +9,24 @@ public class Job
     [SerializeField] SuperPower[] acceptedPowers;
     [SerializeField] SuperPower[] forbiddenPowers;
 
-    public bool IsCompatibleWith(IList<SuperPower> powers)
+    public bool IsCompatibleWith(List<SuperPower> powers)
     {
-        return true;
+        bool isCompatible;
+        foreach (var power in forbiddenPowers)
+        {
+            if (powers.Contains(power))
+            {   
+                isCompatible = false;
+            }
+        }
+        foreach (var power in acceptedPowers)
+        {
+            if (powers.Contains(power))
+            {
+                isCompatible = true;
+            }
+        }
+        isCompatible = false;
+        return isCompatible;
     }
 }
