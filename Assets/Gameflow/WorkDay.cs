@@ -58,6 +58,9 @@ public class WorkDay
             currentHero.AddFear(GameController.GetRandomFear());
         }
 
+
+        Debug.Log("Un nouveau héros se présente à vous " + currentHero.name + ", ses pouvoirs sont : " + currentHero.GetPowers() + ", ses peurs : " + currentHero.GetFears());
+
         return currentHero;
     }
 }
