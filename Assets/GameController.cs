@@ -49,9 +49,15 @@ public class GameController : MonoBehaviour
         listOfFears[3] = new Fear("Arithmophobie");
         listOfFears[4] = new Fear("Athazagoraphobie");
 
-        //listOfJobs[0] = new Job("Achluophobie");
-        //listOfJobs[1] = new Job("Agoraphobie");
-        //listOfJobs[2] = new Job("Apéirophobie");
+        Job job1 = new Job("A");
+        job1.AddPower(listOfPowers[2]);
+        job1.AddFear(listOfFears[3]);
+        listOfJobs[0] = job1;
+
+        Job job2 = new Job("B");
+        job2.AddPower(listOfPowers[0]);
+        job2.AddFear(listOfFears[2]);
+        listOfJobs[1] = job2;
     }
 
     // Use this for initialization
