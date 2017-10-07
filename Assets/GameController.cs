@@ -13,6 +13,9 @@ public class GameController : MonoBehaviour
 
     WorkDay dayTest;
     SuperHero currentHero;
+    IDictionary<string, int> inputMapping = new Dictionary<string, int>();
+    IDictionary<string, int> frenchInputs = new Dictionary<string, int>{ { "z",0 }, { "q", 1 }, { "s", 2 }, { "d", 3 } };
+    IDictionary<string, int> canadianInputs = new Dictionary<string, int>{ { "w",0 }, { "a", 1 }, { "s", 2 }, { "d", 3 } };
 
     // for flashing red when you're wrong
     bool isWrong = false;
@@ -21,19 +24,18 @@ public class GameController : MonoBehaviour
     public Color wrongColour = new Color(1f, 0f, 0f, 0.1f);
     //public Color rightColour = new Color(0f, 0f, 1f, 0.1f);
 
-
-    // GETTERS 
-    public static int GetNumJobs()
+    // GETTERS
+    public static int GetJobCount()
     {
         return listOfJobs.Length;
     }
 
-    public static int GetNumPowers()
+    public static int GetPowerCount()
     {
         return listOfPowers.Length;
     }
 
-    public static int GetNumFears()
+    public static int GetFearCount()
     {
         return listOfFears.Length;
     }
@@ -86,45 +88,28 @@ public class GameController : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         // create jobs, fears, powers
         InitLists();
 
         //initialisation logic
+        inputMapping = frenchInputs;
         dayTest = new WorkDay();
         dayTest.SelectJobs();
         currentHero = dayTest.CreateEncounter();
     }
 
+    bool hasInput = false;
+    bool isCompatible = false;
     // Update is called once per frame
-    void Update () {
-        bool isCompatible = false;
-        bool hasInput = false;
+    void Update()
+    {
 
         // depending on the touch pressed by the player the superhero is sent to a different job
-        if (Input.GetKeyDown("z") && dayTest.GetNumJobs() > 0)
+        foreach (var input in inputMapping)
         {
-            hasInput = true;
-            Job job = dayTest.KeyToJob(0);
-            isCompatible = job.IsCompatibleWith(currentHero);
-        }
-        if (Input.GetKeyDown("q") && dayTest.GetNumJobs() > 1)
-        {
-            hasInput = true;
-            Job job = dayTest.KeyToJob(1);
-            isCompatible = job.IsCompatibleWith(currentHero);
-        }
-        if (Input.GetKeyDown("s") && dayTest.GetNumJobs() > 2)
-        {
-            hasInput = true;
-            Job job = dayTest.KeyToJob(2);
-            isCompatible = job.IsCompatibleWith(currentHero);
-        }
-        if (Input.GetKeyDown("d") && dayTest.GetNumJobs() > 3)
-        {
-            hasInput = true;
-            Job job = dayTest.KeyToJob(3);
-            isCompatible = job.IsCompatibleWith(currentHero);
+            ProcessKeyInput(input.Key, input.Value);
         }
 
         if (hasInput)
@@ -140,6 +125,7 @@ public class GameController : MonoBehaviour
             }
             print("Next Encounter");
             currentHero = dayTest.CreateEncounter();
+            hasInput = false;
         }
 
         // for red flash
@@ -154,4 +140,13 @@ public class GameController : MonoBehaviour
         }
     }
 
+    void ProcessKeyInput(string key, int jobId)
+    {
+        if (Input.GetKeyDown(key) && dayTest.GetJobCount() > jobId)
+        {
+            hasInput = true;
+            Job job = dayTest.KeyToJob(jobId);
+            isCompatible = job.IsCompatibleWith(currentHero);
+        }
+    }
 }

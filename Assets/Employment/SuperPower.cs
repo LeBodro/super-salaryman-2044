@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class SuperPower
 {
-    [SerializeField] string powerName;
-    [SerializeField] Texture2D icon;
+    string name;
+    Texture2D icon;
 
     public SuperPower(string name)
     {
-        powerName = name;
+        this.name = name;
     }
 
-    public string Power { get { return powerName; } }
+    public string Power { get { return name; } }
 
     public Texture2D Icon { get { return icon; } }
-
-    void Start()
-    {
-        Debug.LogError("SuperPowers should stay prefabs and never be instantiated.");
-    }
 }
