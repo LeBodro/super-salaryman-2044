@@ -11,6 +11,7 @@ public class Levels : MonoBehaviour
      * */
 
     [SerializeField] WorkDay[] days;
+    [SerializeField] int maxJobCount;
 
     int currentLevel = 0;
 
@@ -26,6 +27,7 @@ public class Levels : MonoBehaviour
         if (days[currentLevel].AddsJob)
         {
             // add a job to pool
+            // if this brings us over maximum, change a job instead
         }
     }
 }
