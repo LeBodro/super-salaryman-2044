@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [System.Serializable]
-public class Job : MonoBehaviour
+public class Job
 {
     [SerializeField] string name;
     [SerializeField] Texture2D icon;
