@@ -9,18 +9,18 @@ public class Job
     [SerializeField] SuperPower[] acceptedPowers;
     [SerializeField] Fear[] forbiddenFears;
 
-    public bool IsCompatibleWith(List<SuperPower> powers, List<Fear> fears)
+    public bool IsCompatibleWith(SuperHero hero)
     {
         foreach (var fear in forbiddenFears)
         {
-            if (fears.Contains(fear))
+            if (hero.GetFears().Contains(fear))
             {   
                 return false;
             }
         }
         foreach (var power in acceptedPowers)
         {
-            if (powers.Contains(power))
+            if (hero.GetPowers().Contains(power))
             {
                 return true;
             }

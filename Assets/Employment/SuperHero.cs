@@ -15,6 +15,16 @@ public class SuperHero : MonoBehaviour
         fears.Add(fear);
     }
 
+    public List<SuperPower> GetPowers()
+    {
+        return powers;
+    }
+
+    public List<Fear> GetFears()
+    {
+        return fears;
+    }
+
     void Start()
     {
 		

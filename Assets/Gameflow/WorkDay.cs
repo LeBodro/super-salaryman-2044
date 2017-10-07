@@ -12,30 +12,33 @@ public class WorkDay
 
     [SerializeField] Job[] todayJobs;
     //[SerializeField] bool addsJob;
-    [SerializeField] static int numJobs;
+    [SerializeField] int numJobs = 1;
 
-    [SerializeField] static Hashtable jobToKey;
-
-    [SerializeField] static string[] keyTabs = { "z", "q", "s", "d" };
+    public int GetNumJobs()
+    {
+        return numJobs;
+    }
 
     //public bool AddsJob { get { return addsJob; } }
     // this is used to know whether this work day adds a new job to the pool or not.
 
-    public static void AddAJob() { numJobs++; }
+    public Job KeyToJob(int index)
+    {
+        return todayJobs[index];
+    }
 
+    public void AddAJob() { numJobs++; }
+
+    // TODO : CHECK TO NOT HAVE THE SAME JOB MULTIPLE TIMES
     public void SelectJobs()
     {
         // init size tab
         todayJobs = new Job[numJobs];
-        // reset the hashtab of the jobToKey
-        jobToKey = new Hashtable();
 
         for(int i=0; i<numJobs; i++)
         {
             //get a job and associate it with a key
             todayJobs[i] = (GameController.GetRandomJob());
-            // link a job to a key
-            jobToKey.Add(keyTabs[i], todayJobs[i]);
         }
     }
 
