@@ -113,4 +113,6 @@ public class WorkDay
         }
         Debug.Log("Un nouveau héros se présente à vous, ses pouvoirs sont : " + powersString + ", ses peurs : " + fearsString);
     }
+
+
 }

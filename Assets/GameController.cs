@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -16,6 +17,18 @@ public class GameController : MonoBehaviour
     IDictionary<string, int> inputMapping = new Dictionary<string, int>();
     IDictionary<string, int> frenchInputs = new Dictionary<string, int>{ { "z",0 }, { "q", 1 }, { "s", 2 }, { "d", 3 } };
     IDictionary<string, int> canadianInputs = new Dictionary<string, int>{ { "w",0 }, { "a", 1 }, { "s", 2 }, { "d", 3 } };
+
+    // for flashing red when you're wrong
+    bool isWrong = false;
+    public Image wrongImage;
+    public float flashSpeed = 20f;
+    public Color wrongColour = new Color(1f, 0f, 0f, 0.1f);
+    //public Color rightColour = new Color(0f, 0f, 1f, 0.1f);
+
+    // audio
+    AudioSource gameAudio;
+    public AudioClip rightClip;
+    public AudioClip wrongClip;
 
     // GETTERS
     public static int GetJobCount()
@@ -83,6 +96,8 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        gameAudio = GetComponent<AudioSource>();
+
         // create jobs, fears, powers
         InitLists();
 
@@ -109,15 +124,31 @@ public class GameController : MonoBehaviour
         {
             if (isCompatible)
             {
+                gameAudio.clip = rightClip;
+                gameAudio.Play();
                 print("SUCCESS");
             }
             else
             {
+                gameAudio.clip = wrongClip;
+                gameAudio.Play();
                 print("WRONG JOB");
+                isWrong = true;
             }
             print("Next Encounter");
             currentHero = dayTest.CreateEncounter();
             hasInput = false;
+        }
+
+        // for red flash
+        if (isWrong)
+        {
+            wrongImage.color = wrongColour;
+            isWrong = false;
+        }
+        else
+        {
+            wrongImage.color = Color.Lerp(wrongImage.color, Color.clear, flashSpeed * Time.deltaTime);
         }
     }
 
