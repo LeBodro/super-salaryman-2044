@@ -39,6 +39,7 @@ public class WorkDay
         {
             //get a job and associate it with a key
             todayJobs[i] = (GameController.GetRandomJob());
+            Debug.Log("job choisi : " + todayJobs[i].GetName() + " / " + todayJobs[i].GetPowers() + " / " + todayJobs[i].GetFears());
         }
     }
 

@@ -19,10 +19,28 @@ public class Job
         acceptedPowers.Add(power);
     }
 
-    public void Add(Fear fear)
+    public void AddFear(Fear fear)
     {
         forbiddenFears.Add(fear);
     }
+
+    public string GetName()
+    {
+        return name;
+    }
+
+    public string GetPowers()
+    {
+        return acceptedPowers.ToString();
+    }
+
+    public string GetFears()
+    {
+        return forbiddenFears.ToString();
+    }
+
+
+
 
     public bool IsCompatibleWith(SuperHero hero)
     {
