@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class SuperPower : MonoBehaviour
 {
-    [SerializeField] string power;
+    [SerializeField] string powerName;
     [SerializeField] Texture2D icon;
 
-    public string Power { get { return power; } }
+    public SuperPower(string name)
+    {
+        powerName = name;
+    }
+
+    public string Power { get { return powerName; } }
 
     public Texture2D Icon { get { return icon; } }
 

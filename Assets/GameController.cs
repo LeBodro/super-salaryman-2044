@@ -31,8 +31,34 @@ public class GameController : MonoBehaviour
         return listOfFears[(int)Random.Range(0.0f, listOfFears.Length)];
     }
 
+    void InitLists()
+    {
+        listOfPowers = new SuperPower[5];
+        listOfFears = new Fear[5];
+        listOfJobs = new Job[2];
+
+        listOfPowers[0] = new SuperPower("Télépathie");
+        listOfPowers[1] = new SuperPower("Invisibilité");
+        listOfPowers[2] = new SuperPower("Vole");
+        listOfPowers[3] = new SuperPower("Gèle");
+        listOfPowers[4] = new SuperPower("Embrasement");
+
+        listOfFears[0] = new Fear("Achluophobie");
+        listOfFears[1] = new Fear("Agoraphobie");
+        listOfFears[2] = new Fear("Apéirophobie");
+        listOfFears[3] = new Fear("Arithmophobie");
+        listOfFears[4] = new Fear("Athazagoraphobie");
+
+        //listOfJobs[0] = new Job("Achluophobie");
+        //listOfJobs[1] = new Job("Agoraphobie");
+        //listOfJobs[2] = new Job("Apéirophobie");
+    }
+
     // Use this for initialization
     void Start () {
+        // create jobs, fears, powers
+        InitLists();
+
         //initialisation logic
         dayTest = new WorkDay();
         dayTest.SelectJobs();

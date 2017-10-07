@@ -7,6 +7,11 @@ public class Fear : MonoBehaviour {
     [SerializeField] string fearName;
     [SerializeField] Texture2D icon;
 
+    public Fear(string name)
+    {
+        fearName = name;
+    }
+
     public string FearName { get { return fearName; } }
 
     public Texture2D Icon { get { return icon; } }
