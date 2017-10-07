@@ -12,7 +12,7 @@ public class WorkDay
 
     [SerializeField] Job[] todayJobs;
     //[SerializeField] bool addsJob;
-    [SerializeField] int numJobs = 1;
+    [SerializeField] int numJobs = 2;
 
     public int GetNumJobs()
     {
