@@ -5,10 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class WorkDay
 {
-    [SerializeField] int minimumPowerCount;
-    [SerializeField] int maximumPowerCount;
-    [SerializeField] int minimumFearCount;
-    [SerializeField] int maximumFearCount;
+    [SerializeField] int minimumPowerCount = 1;
+    [SerializeField] int maximumPowerCount = 2;
+    [SerializeField] int minimumFearCount = 1;
+    [SerializeField] int maximumFearCount = 2;
 
     [SerializeField] Job[] todayJobs;
     //[SerializeField] bool addsJob;
@@ -39,7 +39,19 @@ public class WorkDay
         {
             //get a job and associate it with a key
             todayJobs[i] = (GameController.GetRandomJob());
-            Debug.Log("job choisi : " + todayJobs[i].GetName() + " / " + todayJobs[i].GetPowers() + " / " + todayJobs[i].GetFears());
+
+            string powersString = "";
+            foreach (var p in todayJobs[i].GetPowers())
+            {
+                powersString += " " + p.Power;
+            }
+
+            string fearsString = "";
+            foreach (var fear in todayJobs[i].GetFears())
+            {
+                fearsString += " " + fear.FearName;
+            }
+            Debug.Log("job choisi : " + todayJobs[i].GetName() + " / " + powersString + " / " + fearsString);
         }
     }
 
@@ -59,8 +71,20 @@ public class WorkDay
             currentHero.AddFear(GameController.GetRandomFear());
         }
 
+        /// TO REMVOVE
+        string powersString = "";
+        foreach (var p in currentHero.GetPowers())
+        {
+            powersString += " " + p.Power;
+        }
 
-        Debug.Log("Un nouveau héros se présente à vous " + currentHero.name + ", ses pouvoirs sont : " + currentHero.GetPowers() + ", ses peurs : " + currentHero.GetFears());
+        string fearsString = "";
+        foreach (var fear in currentHero.GetFears())
+        {
+            fearsString += " " + fear.FearName;
+        }
+
+        Debug.Log("Un nouveau héros se présente à vous, ses pouvoirs sont : " + powersString + ", ses peurs : " + fearsString);
 
         return currentHero;
     }

@@ -12,6 +12,8 @@ public class Job
     public Job(string JobName)
     {
         name = JobName;
+        acceptedPowers = new List<SuperPower>();
+        forbiddenFears = new List<Fear>();
     }
 
     public void AddPower(SuperPower power)
@@ -29,18 +31,15 @@ public class Job
         return name;
     }
 
-    public string GetPowers()
+    public List<SuperPower> GetPowers()
     {
-        return acceptedPowers.ToString();
+        return acceptedPowers;
     }
 
-    public string GetFears()
+    public List<Fear> GetFears()
     {
-        return forbiddenFears.ToString();
+        return forbiddenFears;
     }
-
-
-
 
     public bool IsCompatibleWith(SuperHero hero)
     {

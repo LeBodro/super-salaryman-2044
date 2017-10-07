@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SuperPower : MonoBehaviour
+public class SuperPower
 {
     [SerializeField] string powerName;
     [SerializeField] Texture2D icon;

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fear : MonoBehaviour {
-
+public class Fear
+{
     [SerializeField] string fearName;
     [SerializeField] Texture2D icon;
 
