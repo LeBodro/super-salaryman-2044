@@ -24,6 +24,11 @@ public class GameController : MonoBehaviour
     public Color wrongColour = new Color(1f, 0f, 0f, 0.1f);
     //public Color rightColour = new Color(0f, 0f, 1f, 0.1f);
 
+    // audio
+    AudioSource gameAudio;
+    public AudioClip rightClip;
+    public AudioClip wrongClip;
+
     // GETTERS
     public static int GetJobCount()
     {
@@ -90,6 +95,8 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        gameAudio = GetComponent<AudioSource>();
+
         // create jobs, fears, powers
         InitLists();
 
@@ -116,10 +123,14 @@ public class GameController : MonoBehaviour
         {
             if (isCompatible)
             {
+                gameAudio.clip = rightClip;
+                gameAudio.Play();
                 print("SUCCESS");
             }
             else
             {
+                gameAudio.clip = wrongClip;
+                gameAudio.Play();
                 print("WRONG JOB");
                 isWrong = true;
             }
