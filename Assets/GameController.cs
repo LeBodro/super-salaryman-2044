@@ -9,9 +9,10 @@ public class GameController : MonoBehaviour
     [SerializeField] static SuperPower[] listOfPowers;
     int playerScore;
 
+    // randomly choose a job within the listOfJobs
     public static Job GetRandomJob()
     {
-        return listOfJobs[1];
+        return listOfJobs[(int)Random.Range(0.0f, listOfJobs.Length)];
     }
 
     // Use this for initialization
