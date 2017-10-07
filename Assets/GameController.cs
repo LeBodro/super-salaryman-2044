@@ -22,6 +22,23 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update () {
 		
-	}
+        // depending on the touch pressed by the player the superhero is sent to a different job
+        if (Input.GetKeyDown("z"))
+        {
+            print("z");
+        }
+        if (Input.GetKeyDown("q"))
+        {
+            print("q");
+        }
+        if (Input.GetKeyDown("s"))
+        {
+            print("s");
+        }
+        if (Input.GetKeyDown("d"))
+        {
+            print("d");
+        }
+    }
 
 }
