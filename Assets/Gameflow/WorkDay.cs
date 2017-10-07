@@ -7,6 +7,9 @@ public class WorkDay
 {
     [SerializeField] int minimumPowerCount;
     [SerializeField] int maximumPowerCount;
+    [SerializeField] int minimumFearCount;
+    [SerializeField] int maximumFearCount;
+
     [SerializeField] Job[] todayJobs;
     //[SerializeField] bool addsJob;
     [SerializeField] static int numJobs;
@@ -30,7 +33,20 @@ public class WorkDay
 
     public SuperHero CreateEncounter()
     {
-        // TODO: Generate a random hero from this workday's min and max power count.
-        return new GameObject().AddComponent<SuperHero>();
+        // TODO : CHECK TO NOT HAVE THE SAME FEAR/POWER MULTIPLE TIMES
+        SuperHero currentHero = new SuperHero();
+        int numPower = (int)Random.Range(minimumPowerCount, maximumPowerCount + 1);
+        for (int i=0; i<numPower; i++)
+        {
+            currentHero.AddPower(GameController.GetRandomPower());
+        }
+
+        int numFear = (int)Random.Range(minimumFearCount, maximumFearCount + 1);
+        for (int i = 0; i < numFear; i++)
+        {
+            currentHero.AddFear(GameController.GetRandomFear());
+        }
+
+        return currentHero;
     }
 }
