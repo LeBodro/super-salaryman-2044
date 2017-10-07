@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -12,6 +13,14 @@ public class GameController : MonoBehaviour
 
     WorkDay dayTest;
     SuperHero currentHero;
+
+    // for flashing red when you're wrong
+    bool isWrong = false;
+    public Image wrongImage;
+    public float flashSpeed = 20f;
+    public Color wrongColour = new Color(1f, 0f, 0f, 0.1f);
+    //public Color rightColour = new Color(0f, 0f, 1f, 0.1f);
+
 
     // GETTERS 
     public static int GetNumJobs()
@@ -127,9 +136,21 @@ public class GameController : MonoBehaviour
             else
             {
                 print("WRONG JOB");
+                isWrong = true;
             }
             print("Next Encounter");
             currentHero = dayTest.CreateEncounter();
+        }
+
+        // for red flash
+        if (isWrong)
+        {
+            wrongImage.color = wrongColour;
+            isWrong = false;
+        }
+        else
+        {
+            wrongImage.color = Color.Lerp(wrongImage.color, Color.clear, flashSpeed * Time.deltaTime);
         }
     }
 
