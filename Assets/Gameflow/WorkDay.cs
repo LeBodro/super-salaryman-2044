@@ -11,7 +11,7 @@ public class WorkDay
     [SerializeField] int maximumFearCount = 2;
 
     [SerializeField] Job[] todayJobs;
-    //[SerializeField] bool addsJob;
+    [SerializeField] bool addsJob;
     [SerializeField] int numJobs = 2;
 
     public int GetJobCount()
@@ -19,7 +19,7 @@ public class WorkDay
         return numJobs;
     }
 
-    //public bool AddsJob { get { return addsJob; } }
+    public bool AddsJob { get { return addsJob; } }
     // this is used to know whether this work day adds a new job to the pool or not.
 
     public Job KeyToJob(int index)
@@ -37,21 +37,10 @@ public class WorkDay
     {
         // init size tab
         todayJobs = new Job[numJobs];
-        List<int> randomPick = new List<int>();
-        int rand;
 
         for (int i = 0; i < numJobs; i++)
         {
-            // get a random index
-            do
-            {
-                rand = (int)Random.Range(0.0f, GameController.GetJobCount());
-            }
-            while (randomPick.Contains(rand));
-            randomPick.Add(rand);
-            
-            // pick job corresponding to the index
-            todayJobs[i] = (GameController.GetJobByIndex(rand));
+            todayJobs[i] = (GameController.PickJob());
 
             string powersString = "";
             foreach (var p in todayJobs[i].GetPowers())

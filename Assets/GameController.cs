@@ -5,10 +5,11 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [SerializeField] Levels levelsConfig;
-    [SerializeField] static Job[] listOfJobs;
-    [SerializeField] static SuperPower[] listOfPowers;
-    [SerializeField] static Fear[] listOfFears;
+
+    static SuperPower[] listOfPowers;
+    static Fear[] listOfFears;
     int playerScore;
+    static Hat<Job> jobs;
 
     WorkDay dayTest;
     SuperHero currentHero;
@@ -19,7 +20,7 @@ public class GameController : MonoBehaviour
     // GETTERS
     public static int GetJobCount()
     {
-        return listOfJobs.Length;
+        return jobs.Count;
     }
 
     public static int GetPowerCount()
@@ -32,9 +33,9 @@ public class GameController : MonoBehaviour
         return listOfFears.Length;
     }
 
-    public static Job GetJobByIndex(int i)
+    public static Job PickJob()
     {
-        return listOfJobs[i];
+        return jobs.Pick();
     }
 
     public static SuperPower GetPowerByIndex(int i)
@@ -54,7 +55,7 @@ public class GameController : MonoBehaviour
     {
         listOfPowers = new SuperPower[5];
         listOfFears = new Fear[5];
-        listOfJobs = new Job[2];
+        jobs = new Hat<Job>();
 
         listOfPowers[0] = new SuperPower("Télépathie");
         listOfPowers[1] = new SuperPower("Invisibilité");
@@ -71,12 +72,12 @@ public class GameController : MonoBehaviour
         Job job1 = new Job("A");
         job1.AddPower(listOfPowers[2]);
         job1.AddFear(listOfFears[3]);
-        listOfJobs[0] = job1;
+        jobs.Put(job1);
 
         Job job2 = new Job("B");
         job2.AddPower(listOfPowers[0]);
         job2.AddFear(listOfFears[2]);
-        listOfJobs[1] = job2;
+        jobs.Put(job2);
     }
 
     // Use this for initialization
