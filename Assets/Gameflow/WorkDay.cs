@@ -34,11 +34,21 @@ public class WorkDay
     {
         // init size tab
         todayJobs = new Job[numJobs];
+        List<int> randomPick = new List<int>();
+        int rand;
 
-        for(int i=0; i<numJobs; i++)
+        for (int i=0; i<numJobs; i++)
         {
-            //get a job and associate it with a key
-            todayJobs[i] = (GameController.GetRandomJob());
+            // get a random index
+            do
+            {
+                rand = (int)Random.Range(0.0f, GameController.GetNumJobs());
+            }
+            while (randomPick.Contains(rand));
+            randomPick.Add(rand);
+            
+            // pick job corresponding to the index
+            todayJobs[i] = (GameController.GetJobByIndex(rand));
 
             string powersString = "";
             foreach (var p in todayJobs[i].GetPowers())
@@ -59,16 +69,37 @@ public class WorkDay
     {
         // TODO : CHECK TO NOT HAVE THE SAME FEAR/POWER MULTIPLE TIMES
         SuperHero currentHero = new SuperHero();
+        List<int> randomPick = new List<int>();
+        int rand;
+
         int numPower = (int)Random.Range(minimumPowerCount, maximumPowerCount + 1);
         for (int i=0; i<numPower; i++)
         {
-            currentHero.AddPower(GameController.GetRandomPower());
+            // get a random index
+            do
+            {
+                rand = (int)Random.Range(0.0f, GameController.GetNumPowers());
+            }
+            while (randomPick.Contains(rand));
+            randomPick.Add(rand);
+
+            currentHero.AddPower(GameController.GetPowerByIndex(rand));
         }
+
+        randomPick.Clear();
 
         int numFear = (int)Random.Range(minimumFearCount, maximumFearCount + 1);
         for (int i = 0; i < numFear; i++)
         {
-            currentHero.AddFear(GameController.GetRandomFear());
+            // get a random index
+            do
+            {
+                rand = (int)Random.Range(0.0f, GameController.GetNumFears());
+            }
+            while (randomPick.Contains(rand));
+            randomPick.Add(rand);
+
+            currentHero.AddFear(GameController.GetFearByIndex(rand));
         }
 
         /// TO REMVOVE

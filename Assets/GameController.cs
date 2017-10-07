@@ -13,23 +13,39 @@ public class GameController : MonoBehaviour
     WorkDay dayTest;
     SuperHero currentHero;
 
-    // randomly choose a job within the listOfJobs
-    public static Job GetRandomJob()
+    // GETTERS 
+    public static int GetNumJobs()
     {
-        return listOfJobs[(int)Random.Range(0.0f, listOfJobs.Length)];
+        return listOfJobs.Length;
     }
 
-    // randomly choose a superpower within the listOfPowers
-    public static SuperPower GetRandomPower()
+    public static int GetNumPowers()
     {
-        return listOfPowers[(int)Random.Range(0.0f, listOfPowers.Length)];
+        return listOfPowers.Length;
     }
 
-    // randomly choose a fear within the listOfFears
-    public static Fear GetRandomFear()
+    public static int GetNumFears()
     {
-        return listOfFears[(int)Random.Range(0.0f, listOfFears.Length)];
+        return listOfFears.Length;
     }
+
+    public static Job GetJobByIndex(int i)
+    {
+        return listOfJobs[i];
+    }
+
+    public static SuperPower GetPowerByIndex(int i)
+    {
+        return listOfPowers[i];
+    }
+
+    public static Fear GetFearByIndex(int i)
+    {
+        return listOfFears[i];
+    }
+
+
+    // METHODS
 
     void InitLists()
     {
