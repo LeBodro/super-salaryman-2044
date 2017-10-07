@@ -24,10 +24,10 @@ public class Levels : MonoBehaviour
     {
         //ends current level
         currentLevel++;
-        if (days[currentLevel].AddsJob)
+        /*if (days[currentLevel].AddsJob)
         {
             // add a job to pool
             // if this brings us over maximum, change a job instead
-        }
+        }*/
     }
 }
