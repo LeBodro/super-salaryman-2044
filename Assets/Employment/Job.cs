@@ -7,26 +7,24 @@ public class Job
     [SerializeField] string name;
     [SerializeField] Texture2D icon;
     [SerializeField] SuperPower[] acceptedPowers;
-    [SerializeField] SuperPower[] forbiddenPowers;
+    [SerializeField] Fear[] forbiddenFears;
 
-    public bool IsCompatibleWith(List<SuperPower> powers)
+    public bool IsCompatibleWith(List<SuperPower> powers, List<Fear> fears)
     {
-        bool isCompatible;
-        foreach (var power in forbiddenPowers)
+        foreach (var fear in forbiddenFears)
         {
-            if (powers.Contains(power))
+            if (fears.Contains(fear))
             {   
-                isCompatible = false;
+                return false;
             }
         }
         foreach (var power in acceptedPowers)
         {
             if (powers.Contains(power))
             {
-                isCompatible = true;
+                return true;
             }
         }
-        isCompatible = false;
-        return isCompatible;
+        return false;
     }
 }
