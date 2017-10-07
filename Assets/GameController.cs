@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : MonoBehaviour {
+public class GameController : MonoBehaviour
+{
+    [SerializeField] Levels levelsConfig;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    int playerScore;
+
+    void Start()
+    {
+        //initialisation logic
+    }
 }
