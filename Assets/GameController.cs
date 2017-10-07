@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    [SerializeField] Job[] listOfJobs;
+    [SerializeField] SuperPower[] listOfPowers;
+
+    public Job GetRandomJob()
+    {
+        return listOfJobs[1];
+    }
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
