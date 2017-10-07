@@ -6,8 +6,23 @@ public class Job
 {
     [SerializeField] string name;
     [SerializeField] Texture2D icon;
-    [SerializeField] SuperPower[] acceptedPowers;
-    [SerializeField] Fear[] forbiddenFears;
+    [SerializeField] List<SuperPower> acceptedPowers;
+    [SerializeField] List<Fear> forbiddenFears;
+
+    public Job(string JobName)
+    {
+        name = JobName;
+    }
+
+    public void AddPower(SuperPower power)
+    {
+        acceptedPowers.Add(power);
+    }
+
+    public void Add(Fear fear)
+    {
+        forbiddenFears.Add(fear);
+    }
 
     public bool IsCompatibleWith(SuperHero hero)
     {
