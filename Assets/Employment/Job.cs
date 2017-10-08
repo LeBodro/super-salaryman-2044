@@ -6,7 +6,7 @@ public class Job
 {
     string key;
     string name;
-    Sprite icon;
+    public Sprite icon;
     List<SuperPower> acceptedPowers;
     List<Fear> forbiddenFears;
 

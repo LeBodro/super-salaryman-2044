@@ -9,6 +9,13 @@ public class Levels : MonoBehaviour
     [SerializeField] GameObject nextLevelInstruction;
     [SerializeField] Roulette heroRoullette;
 
+    [SerializeField] Color color;
+    [SerializeField] Image upIcon;
+    [SerializeField] Image rIcon;
+    [SerializeField] Image dIcon;
+    [SerializeField] Image lIcon;
+
+
     // for ui icons
     [SerializeField] IconForUI iconManager;
 
@@ -47,6 +54,27 @@ public class Levels : MonoBehaviour
         if (days[currentLevel].AddsJob)
         {      
             Job newJob = GameController.PickJob();
+
+            if (newJob == KeyToJob(0))
+            {
+                upIcon.sprite = newJob.icon;
+                upIcon.color = color;
+            }
+            if (newJob == KeyToJob(1))
+            {
+                rIcon.sprite = newJob.icon;
+                rIcon.color = color;
+            }
+            if (newJob == KeyToJob(2))
+            {
+                dIcon.sprite = newJob.icon;
+                dIcon.color = color;
+            }
+            if (newJob == KeyToJob(3))
+            {
+                lIcon.sprite = newJob.icon;
+                lIcon.color = color;
+            }
 
             if (jobCount == maxJobCount)
             {
