@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class Fear
 {
-    [SerializeField] string fearName;
-    [SerializeField] Texture2D icon;
+    string key;
+    string fearName;
+    Sprite icon;
 
-    public Fear(string name)
+    public Fear(string key, string name, string icon)
     {
+        this.key = key;
         fearName = name;
+        // TODO : icon from the given fileName
     }
 
     public string FearName { get { return fearName; } }
 
-    public Texture2D Icon { get { return icon; } }
+    public Sprite Icon { get { return icon; } }
 
     void Start()
     {
         Debug.LogError("Fears should stay prefabs and never be instantiated.");
     }
+
+    public string GetKey() { return key;  }
 }
