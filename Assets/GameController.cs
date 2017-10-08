@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     [SerializeField] Effect wrong;
     [SerializeField] Effect right;
 
+    [SerializeField] Keyboard keyboard;
+
     static SuperPower[] listOfPowers;
     static Fear[] listOfFears;
     int playerScore;
@@ -17,8 +19,8 @@ public class GameController : MonoBehaviour
     WorkDay dayTest;
     SuperHero currentHero;
     IDictionary<string, int> inputMapping = new Dictionary<string, int>();
-    IDictionary<string, int> frenchInputs = new Dictionary<string, int>{ { "z",0 }, { "q", 1 }, { "s", 2 }, { "d", 3 } };
-    IDictionary<string, int> canadianInputs = new Dictionary<string, int>{ { "w",0 }, { "a", 1 }, { "s", 2 }, { "d", 3 } };
+    IDictionary<string, int> frenchInputs = new Dictionary<string, int>{ { "z", 0 }, { "q", 1 }, { "s", 2 }, { "d", 3 } };
+    IDictionary<string, int> canadianInputs = new Dictionary<string, int>{ { "w", 0 }, { "a", 1 }, { "s", 2 }, { "d", 3 } };
 
     // GETTERS
     public static int GetJobCount()
@@ -53,7 +55,6 @@ public class GameController : MonoBehaviour
 
 
     // METHODS
-
     void InitLists()
     {
         listOfPowers = new SuperPower[5];
@@ -92,6 +93,7 @@ public class GameController : MonoBehaviour
 
         //initialisation logic
         inputMapping = frenchInputs;
+        keyboard.SetFrenchUI();
         dayTest = new WorkDay();
         dayTest.SelectJobs();
         currentHero = dayTest.CreateEncounter();
@@ -113,6 +115,7 @@ public class GameController : MonoBehaviour
         {
             if (isCompatible)
             {
+                // maybe put it louder ?
                 CrackleAudio.SoundController.PlaySound("right");
             }
             else
