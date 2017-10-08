@@ -7,6 +7,7 @@ public class Levels : MonoBehaviour
     [SerializeField] WorkDay[] days;
     [SerializeField] int maxJobCount;
     [SerializeField] GameObject nextLevelInstruction;
+    [SerializeField] Roulette heroRoullette;
 
     // for ui icons
     [SerializeField] IconForUI iconManager;
@@ -75,6 +76,7 @@ public class Levels : MonoBehaviour
         else
         {
             currentHero = days[currentLevel].CreateEncounter();
+            heroRoullette.Turn();
             // for ui icons
             iconManager.HandleIcons(currentHero.GetPowers(), currentHero.GetFears());
         }
@@ -89,7 +91,8 @@ public class Levels : MonoBehaviour
         if (currentLevel < days.Length)
         {   
             isPlaying = false;
-            if (nextLevelInstruction != null) {
+            if (nextLevelInstruction != null)
+            {
                 scoreManager.EndLevelScore();
                 nextLevelInstruction.SetActive(true);
             }

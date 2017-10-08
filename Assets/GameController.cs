@@ -149,7 +149,8 @@ public class GameController : MonoBehaviour
                     }
                 }          
 
-            } else if (levelsConfig.GetCurrentJobCount() > jobId)
+            }
+            else if (levelsConfig.GetCurrentJobCount() > jobId)
             {
                 // if it's a normal key
                 Job job = levelsConfig.KeyToJob(jobId);

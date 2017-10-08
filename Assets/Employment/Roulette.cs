@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class HeroRoulette : MonoBehaviour
+public class Roulette : MonoBehaviour
 {
     int selectionCount;
 
