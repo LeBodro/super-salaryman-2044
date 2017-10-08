@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class SuperPower
 {
-    string name;
+    string powerName;
     Sprite icon;
 
     public SuperPower(string name)
     {
-        this.name = name;
+        this.powerName = name;
     }
 
     public void SetIcon(Sprite sprite)
@@ -18,7 +18,7 @@ public class SuperPower
         icon = sprite;
     }
 
-    public string Power { get { return name; } }
+    public string Power { get { return powerName; } }
 
     public Sprite Icon { get { return icon; } }
 }

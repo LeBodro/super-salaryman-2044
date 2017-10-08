@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Fear
 {
-    [SerializeField] string fearName;
-    [SerializeField] Sprite icon;
+    string fearName;
+    Sprite icon;
 
     public Fear(string name)
     {
