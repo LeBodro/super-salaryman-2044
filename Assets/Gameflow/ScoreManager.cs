@@ -10,6 +10,9 @@ public class ScoreManager : MonoBehaviour {
     [SerializeField] Text scoreText;
     [SerializeField] Text levelScoreText;
 
+    [SerializeField] Text stInstruction;
+    [SerializeField] Text lstInstruction;
+
     [SerializeField] int successPoints;
     [SerializeField] int failPoints;
     //[SerializeField] int pointsPerSecondsLeft;
@@ -30,6 +33,14 @@ public class ScoreManager : MonoBehaviour {
 
         levelScore += successPoints;
         levelScoreText.text = "LevelScore: " + levelScore;
+    }
+
+    public void EndLevelScore(int secondsLeft)
+    {
+        int plainScore = score;
+        score += secondsLeft;
+        stInstruction.text = "Score: " + plainScore + " + " + secondsLeft + "s: " + score + " points";
+        lstInstruction.text = "LevelScore: " + levelScore + " points";
     }
 
     public void ResetScore()

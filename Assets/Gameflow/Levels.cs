@@ -7,12 +7,14 @@ public class Levels : MonoBehaviour
     [SerializeField] WorkDay[] days;
     [SerializeField] int maxJobCount;
     [SerializeField] GameObject nextLevelInstruction;
+    [SerializeField] Roulette heroRoullette;
 
     // for ui icons
     [SerializeField] IconForUI iconManager;
 
     // for counting score for each level
     public ScoreManager scoreManager;
+    [SerializeField] Timer dayTimer;
 
 
     IList<Job> jobs = new List<Job>();
@@ -38,8 +40,9 @@ public class Levels : MonoBehaviour
     public void StartNext()
     {
         isPlaying = true;
-        //reset score
+        //reset score and time
         scoreManager.ResetScore();
+        dayTimer.Begin();
 
         if (days[currentLevel].AddsJob)
         {      
@@ -75,6 +78,7 @@ public class Levels : MonoBehaviour
         else
         {
             currentHero = days[currentLevel].CreateEncounter();
+            heroRoullette.Turn();
             // for ui icons
             iconManager.HandleIcons(currentHero.GetPowers(), currentHero.GetFears());
         }
@@ -90,8 +94,10 @@ public class Levels : MonoBehaviour
         {   
             isPlaying = false;
             if (nextLevelInstruction != null)
+            {
+                scoreManager.EndLevelScore((int)dayTimer.GetTimeLeft());
                 nextLevelInstruction.SetActive(true);
-                
+            }  
         }
         else
         {
