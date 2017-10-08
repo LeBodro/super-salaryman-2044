@@ -11,6 +11,9 @@ public class Levels : MonoBehaviour
     // for ui icons
     [SerializeField] IconForUI iconManager;
 
+    // for counting score for each level
+    public ScoreManager scoreManager;
+
 
     IList<Job> jobs = new List<Job>();
     public static SuperHero currentHero;
@@ -35,6 +38,8 @@ public class Levels : MonoBehaviour
     public void StartNext()
     {
         isPlaying = true;
+        //reset score
+        scoreManager.ResetScore();
 
         if (days[currentLevel].AddsJob)
         {      
@@ -86,6 +91,7 @@ public class Levels : MonoBehaviour
             isPlaying = false;
             if (nextLevelInstruction != null)
                 nextLevelInstruction.SetActive(true);
+                
         }
         else
         {
