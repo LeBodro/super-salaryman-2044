@@ -8,11 +8,11 @@ public class Fear
     string fearName;
     Sprite icon;
 
-    public Fear(string key, string name, string icon)
+    public Fear(string key, string name)
     {
         this.key = key;
         fearName = name;
-        // TODO : icon from the given fileName
+        icon = Resources.Load<Sprite>(key);
     }
 
     public void SetIcon(Sprite sprite)

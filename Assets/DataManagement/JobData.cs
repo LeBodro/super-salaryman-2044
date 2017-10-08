@@ -6,7 +6,6 @@ public class JobData
 {
     public string key;
     public string name;
-    public string icon;
 
     public string[] acceptedPowers;
     public string[] forbiddenFears;

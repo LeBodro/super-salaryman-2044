@@ -6,5 +6,4 @@ public class FearData
 {
     public string key;
     public string name;
-    public string icon;
 }

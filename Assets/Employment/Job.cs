@@ -10,12 +10,13 @@ public class Job
     List<SuperPower> acceptedPowers;
     List<Fear> forbiddenFears;
 
-    public Job(string key, string JobName, string icon)
+    public Job(string key, string JobName)
     {
         this.key = key;
         name = JobName;
 
-        //TODO : icon gestion same as the other
+
+        icon = Resources.Load<Sprite>(key);
         acceptedPowers = new List<SuperPower>();
         forbiddenFears = new List<Fear>();
     }

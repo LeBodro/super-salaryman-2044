@@ -1,7 +1,6 @@
 {
     "key":"paix",
     "name":"Agent de paix",
-    "icon":"paix.png",
     "acceptedPowers":[
     "gravite",
     "telepathie"
@@ -16,7 +15,6 @@
 {
     "key":"intellectuels",
     "name":"Exterminateur d'intellectuels",
-    "icon":"intellectuels.png",
     "acceptedPowers":[
     "tranchant",
     "force",
@@ -32,7 +30,6 @@
 {
     "key":"therapeute",
     "name":"Thérapeute pour machos",
-    "icon":"therapeute.png",
     "acceptedPowers":[
     "multibras",
     "force",
@@ -47,7 +44,6 @@
 {
     "key":"cuisinier",
     "name":"Cuisinier pour vegan",
-    "icon":"cuisinier.png",
     "acceptedPowers":[
     "tranchant",
     "multibras",
@@ -62,7 +58,6 @@
 {
     "key":"dj",
     "name":"DJ ",
-    "icon":"dj.png",
     "acceptedPowers":[
     "multibras",
     "vitesse",
@@ -76,7 +71,6 @@
 {
     "key":"recycleur",
     "name":"Recycleur de déchets de l'espace",
-    "icon":"recycleur.png",
     "acceptedPowers":[
     "tranchant",
     "gravite",

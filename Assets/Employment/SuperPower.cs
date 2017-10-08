@@ -9,13 +9,11 @@ public class SuperPower
     string name;
     Sprite icon;
 
-    public SuperPower(string key, string name, string icon)
+    public SuperPower(string key, string name)
     {
         this.key = key;
         this.name = name;
-
-        // TODO : Create the sprite depending
-        //icon = Resources.Load<Sprite>("SuperPowerIcon/" + icon);
+        icon = Resources.Load<Sprite>(key);
     }
 
     public void SetIcon(Sprite sprite)
