@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     [SerializeField] Effect right;
 
     [SerializeField] Keyboard keyboard;
+    [SerializeField] ScoreManager scoreManager;
 
     static SuperPower[] listOfPowers;
     static Fear[] listOfFears;
@@ -98,12 +99,13 @@ public class GameController : MonoBehaviour
         {
             if (isCompatible)
             {
-                // maybe put it louder ?
                 CrackleAudio.SoundController.PlaySound("right");
+                scoreManager.ScoreRightAnswer();
             }
             else
             {
                 wrong.Play();
+                scoreManager.ScoreWrongAnswer();
             }
             print("Next Encounter");
             levelsConfig.NextEncounter();
