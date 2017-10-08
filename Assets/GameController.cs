@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
 
         //initialisation logic
         inputMapping = frenchInputs;
+        keyboard.SetFrenchUI();
 
         // start the first level
         levelsConfig.StartNext();
