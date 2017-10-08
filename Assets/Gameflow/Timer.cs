@@ -11,6 +11,11 @@ public class Timer : MonoBehaviour
     Text display;
     float timeLeft;
 
+    public float GetTimeLeft()
+    {
+        return timeLeft;
+    }
+
     event Action _onEnd = delegate{};
 
     public event Action OnEnd

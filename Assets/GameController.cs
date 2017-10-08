@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [SerializeField] Levels levelsConfig;
-    [SerializeField] Timer dayTimer;
     [SerializeField] Effect wrong;
     [SerializeField] Effect right;
 
@@ -29,7 +28,6 @@ public class GameController : MonoBehaviour
         InitLists();
 
         // start the first level
-        dayTimer.Begin();
         levelsConfig.StartNext();
         levelsConfig.OnEnd += EndGame; // TODO: Pass endgame method as parameter instead of lambda debug
     }

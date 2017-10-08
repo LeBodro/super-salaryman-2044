@@ -35,10 +35,12 @@ public class ScoreManager : MonoBehaviour {
         levelScoreText.text = "LevelScore: " + levelScore;
     }
 
-    public void EndLevelScore()
+    public void EndLevelScore(int secondsLeft)
     {
-        stInstruction.text = "Score: " + score;
-        lstInstruction.text = "LevelScore: " + levelScore;
+        int plainScore = score;
+        score += secondsLeft;
+        stInstruction.text = "Score: " + plainScore + " + " + secondsLeft + "s: " + score + "points";
+        lstInstruction.text = "LevelScore: " + levelScore + " points";
     }
 
     public void ResetScore()
