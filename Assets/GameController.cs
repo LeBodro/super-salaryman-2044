@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [SerializeField] Levels levelsConfig;
+    [SerializeField] Timer dayTimer;
 
     static SuperPower[] listOfPowers;
     static Fear[] listOfFears;
