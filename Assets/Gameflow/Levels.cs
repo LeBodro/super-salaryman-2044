@@ -16,7 +16,9 @@ public class Levels : MonoBehaviour
     public static SuperHero currentHero;
 
     int currentLevel = 0;
-    bool waitForNextLevelInput;
+    bool isPlaying;
+
+    public bool IsPlaying { get { return isPlaying; } }
 
     int jobCount { get { return jobs.Count; } }
 
@@ -32,6 +34,8 @@ public class Levels : MonoBehaviour
 
     public void StartNext()
     {
+        isPlaying = true;
+
         if (days[currentLevel].AddsJob)
         {      
             Job newJob = GameController.PickJob();
@@ -79,7 +83,7 @@ public class Levels : MonoBehaviour
         // start the next level
         if (currentLevel < days.Length)
         {   
-            waitForNextLevelInput = true;
+            isPlaying = false;
             if (nextLevelInstruction != null)
                 nextLevelInstruction.SetActive(true);
         }
@@ -91,9 +95,9 @@ public class Levels : MonoBehaviour
 
     void Update()
     {
-        if (waitForNextLevelInput && Input.GetKeyDown(KeyCode.Space))
+        if (!isPlaying && Input.GetKeyDown(KeyCode.Space))
         {
-            waitForNextLevelInput = false;
+            isPlaying = true;
             StartNext();
             if (nextLevelInstruction != null)
                 nextLevelInstruction.SetActive(false);

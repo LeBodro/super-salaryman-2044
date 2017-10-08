@@ -94,7 +94,7 @@ public class GameController : MonoBehaviour
             ProcessKeyInput(input.Key, input.Value);
         }
 
-        if (aHeroWasChosen)
+        if (levelsConfig.IsPlaying && aHeroWasChosen)
         {
             if (isCompatible)
             {
