@@ -36,7 +36,6 @@ public class GameDataTest
         var list = json.LoadJobData();
 
         Debug.Log(list[0].name);
-        Debug.Log(list[0].icon);
         Debug.Log(list[0].acceptedPowers[0]);
 
         //Assert.AreEqual("Super Force", list[0].name);

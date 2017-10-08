@@ -22,6 +22,7 @@ public class IconForUI : MonoBehaviour {
     {
         ResetIcons();
 
+        /*
         // TO DELETE once the sprite will be set for powers and fears
         if (test)
         {
@@ -52,7 +53,7 @@ public class IconForUI : MonoBehaviour {
             test = true;
         }
         // END DELETE
-
+        */
         int i = 0;
         foreach (var p in pow)
         {
@@ -63,6 +64,7 @@ public class IconForUI : MonoBehaviour {
         i = 0;
         foreach (var f in fears)
         {
+            Debug.Log(f.Icon);
             SetFearUI(f.Icon, i);
             i++;
         }

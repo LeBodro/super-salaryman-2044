@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour
         int i = 0;
         foreach (var powerData in listofPowersData)
         { 
-            listOfPowers[i] = new SuperPower(powerData.key, powerData.name, powerData.icon);
+            listOfPowers[i] = new SuperPower(powerData.key, powerData.name);
             keyToIndexOfPower.Add(powerData.key, i);
             i++;
         }
@@ -68,14 +68,14 @@ public class GameController : MonoBehaviour
         i = 0;
         foreach (var fearData in listOfFearsData)
         {
-            listOfFears[i] = new Fear(fearData.key, fearData.name, fearData.icon);
+            listOfFears[i] = new Fear(fearData.key, fearData.name);
             keyToIndexOfFear.Add(fearData.key, i);
             i++;
         }
 
         foreach (var jobData in listOfJobsData)
         {
-            Job job = new Job(jobData.key, jobData.name, jobData.icon);
+            Job job = new Job(jobData.key, jobData.name);
             foreach (var powerKey in jobData.acceptedPowers)
             {
                 job.AddPower(listOfPowers[keyToIndexOfPower[powerKey]]);
@@ -97,7 +97,7 @@ public class GameController : MonoBehaviour
     {
         // TODO: Input processing should be in its own class. Game controller may have a reference to pass along information.
         // HACK: kind of hack to stop receiving inputs once game ended.
-        if (levelsConfig.Ended)
+        if (levelsConfig.Ended || !levelsConfig.IsPlaying)
             return;
         
         // depending on the touch pressed by the player the superhero is sent to a different job
@@ -106,7 +106,7 @@ public class GameController : MonoBehaviour
             ProcessKeyInput(input.Key, input.Value);
         }
 
-        if (levelsConfig.IsPlaying && aHeroWasChosen)
+        if (aHeroWasChosen)
         {
             if (isCompatible)
             {
