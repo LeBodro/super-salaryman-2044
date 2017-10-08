@@ -53,28 +53,7 @@ public class Levels : MonoBehaviour
 
         if (days[currentLevel].AddsJob)
         {      
-            Job newJob = GameController.PickJob();
-
-            if (newJob == KeyToJob(0))
-            {
-                upIcon.sprite = newJob.icon;
-                upIcon.color = color;
-            }
-            if (newJob == KeyToJob(1))
-            {
-                rIcon.sprite = newJob.icon;
-                rIcon.color = color;
-            }
-            if (newJob == KeyToJob(2))
-            {
-                dIcon.sprite = newJob.icon;
-                dIcon.color = color;
-            }
-            if (newJob == KeyToJob(3))
-            {
-                lIcon.sprite = newJob.icon;
-                lIcon.color = color;
-            }
+            Job newJob = GameController.PickJob();            
 
             if (jobCount == maxJobCount)
             {
@@ -85,7 +64,29 @@ public class Levels : MonoBehaviour
             {
                 jobs.Add(newJob);
             }
-            
+
+            if (GetCurrentJobCount() == 1)
+            {
+                Debug.Log("aaa" + newJob.icon);
+                upIcon.sprite = newJob.icon;
+                upIcon.color = color;
+            }
+            if (GetCurrentJobCount() == 2)
+            {
+                rIcon.sprite = newJob.icon;
+                rIcon.color = color;
+            }
+            if (GetCurrentJobCount() == 3)
+            {
+                dIcon.sprite = newJob.icon;
+                dIcon.color = color;
+            }
+            if (GetCurrentJobCount() == 4)
+            {
+                lIcon.sprite = newJob.icon;
+                lIcon.color = color;
+            }
+
             LogJob(newJob);
         }
 
