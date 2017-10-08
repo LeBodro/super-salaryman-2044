@@ -85,7 +85,7 @@ public class GameController : MonoBehaviour
     {
         // TODO: Input processing should be in its own class. Game controller may have a reference to pass along information.
         // HACK: kind of hack to stop receiving inputs once game ended.
-        if (levelsConfig.Ended)
+        if (levelsConfig.Ended || !levelsConfig.IsPlaying)
             return;
         
         // depending on the touch pressed by the player the superhero is sent to a different job
@@ -94,7 +94,7 @@ public class GameController : MonoBehaviour
             ProcessKeyInput(input.Key, input.Value);
         }
 
-        if (levelsConfig.IsPlaying && aHeroWasChosen)
+        if (aHeroWasChosen)
         {
             if (isCompatible)
             {
