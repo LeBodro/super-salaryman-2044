@@ -5,61 +5,28 @@ using UnityEngine;
 [System.Serializable]
 public class WorkDay
 {
-    [SerializeField] int minimumPowerCount = 1;
-    [SerializeField] int maximumPowerCount = 2;
-    [SerializeField] int minimumFearCount = 1;
-    [SerializeField] int maximumFearCount = 2;
+    [SerializeField] int minimumPowerCount;
+    [SerializeField] int maximumPowerCount;
+    [SerializeField] int minimumFearCount;
+    [SerializeField] int maximumFearCount;
 
-    [SerializeField] Job[] todayJobs;
     [SerializeField] bool addsJob;
-    [SerializeField] int numJobs = 2;
 
-    public int GetJobCount()
-    {
-        return numJobs;
-    }
+    [SerializeField] int heroCount;
 
     public bool AddsJob { get { return addsJob; } }
     // this is used to know whether this work day adds a new job to the pool or not.
 
-    public Job KeyToJob(int index)
+    public int GetHeroCount()
     {
-        return todayJobs[index];
-    }
-
-    public void AddAJob()
-    {
-        numJobs++;
-    }
-
-    // TODO : CHECK TO NOT HAVE THE SAME JOB MULTIPLE TIMES
-    public void SelectJobs()
-    {
-        // init size tab
-        todayJobs = new Job[numJobs];
-
-        for (int i = 0; i < numJobs; i++)
-        {
-            todayJobs[i] = (GameController.PickJob());
-
-            string powersString = "";
-            foreach (var p in todayJobs[i].GetPowers())
-            {
-                powersString += " " + p.Power;
-            }
-
-            string fearsString = "";
-            foreach (var fear in todayJobs[i].GetFears())
-            {
-                fearsString += " " + fear.FearName;
-            }
-            Debug.Log("job choisi : " + todayJobs[i].GetName() + " / " + powersString + " / " + fearsString);
-        }
+        return heroCount;
     }
 
     public SuperHero CreateEncounter()
     {
         // TODO : CHECK TO NOT HAVE THE SAME FEAR/POWER MULTIPLE TIMES
+        heroCount--;
+
         SuperHero currentHero = new SuperHero();
         List<int> randomPick = new List<int>();
         int rand;
@@ -113,6 +80,4 @@ public class WorkDay
         }
         Debug.Log("Un nouveau héros se présente à vous, ses pouvoirs sont : " + powersString + ", ses peurs : " + fearsString);
     }
-
-
 }
