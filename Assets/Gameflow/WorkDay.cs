@@ -31,13 +31,13 @@ public class WorkDay
         List<int> randomPick = new List<int>();
         int rand;
 
-        int numPower = (int)Random.Range(minimumPowerCount, maximumPowerCount + 1);
+        int numPower = Random.Range(minimumPowerCount, maximumPowerCount + 1);
         for (int i = 0; i < numPower; i++)
         {
             // get a random index
             do
             {
-                rand = (int)Random.Range(0.0f, GameController.GetPowerCount());
+                rand = Random.Range(0, GameController.GetPowerCount());
             }
             while (randomPick.Contains(rand));
             randomPick.Add(rand);
@@ -47,13 +47,13 @@ public class WorkDay
 
         randomPick.Clear();
 
-        int numFear = (int)Random.Range(minimumFearCount, maximumFearCount + 1);
+        int numFear = Random.Range(minimumFearCount, maximumFearCount + 1);
         for (int i = 0; i < numFear; i++)
         {
             // get a random index
             do
             {
-                rand = (int)Random.Range(0.0f, GameController.GetFearCount());
+                rand = Random.Range(0, GameController.GetFearCount());
             }
             while (randomPick.Contains(rand));
             randomPick.Add(rand);
