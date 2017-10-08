@@ -93,14 +93,9 @@ public class Levels : MonoBehaviour
         if (currentLevel < days.Length)
         {   
             isPlaying = false;
-<<<<<<< HEAD
-            if (nextLevelInstruction != null) {
-                scoreManager.EndLevelScore((int)dayTimer.GetTimeLeft());
-=======
             if (nextLevelInstruction != null)
             {
-                scoreManager.EndLevelScore();
->>>>>>> 95e58f03b109f7021683254daaabe41193ebad44
+                scoreManager.EndLevelScore((int)dayTimer.GetTimeLeft());
                 nextLevelInstruction.SetActive(true);
             }  
         }
