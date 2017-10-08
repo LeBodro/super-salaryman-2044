@@ -39,7 +39,7 @@ public class ScoreManager : MonoBehaviour {
     {
         int plainScore = score;
         score += secondsLeft;
-        stInstruction.text = "Score: " + plainScore + " + " + secondsLeft + "s: " + score + "points";
+        stInstruction.text = "Score: " + plainScore + " + " + secondsLeft + "s: " + score + " points";
         lstInstruction.text = "LevelScore: " + levelScore + " points";
     }
 
