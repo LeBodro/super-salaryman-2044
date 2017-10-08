@@ -31,10 +31,14 @@ public class GameController : MonoBehaviour
         // start the first level
         dayTimer.Begin();
         levelsConfig.StartNext();
-        levelsConfig.OnEnd += () => Debug.Log("END GAME"); // TODO: Pass endgame method as parameter instead of lambda debug
+        levelsConfig.OnEnd += EndGame; // TODO: Pass endgame method as parameter instead of lambda debug
     }
 
-    // METHODS
+    void EndGame()
+    {
+        Debug.Log("END GAME");
+    }
+
     void InitLists()
     {
         listOfPowers = new SuperPower[5];
@@ -79,7 +83,11 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // TODO: Input processing should be in its own class. Game controller may have a reference to pass along information.
+        // HACK: kind of hack to stop receiving inputs once game ended.
+        if (levelsConfig.Ended)
+            return;
+        
         // depending on the touch pressed by the player the superhero is sent to a different job
         foreach (var input in inputMapping)
         {

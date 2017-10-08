@@ -13,6 +13,8 @@ public class Levels : MonoBehaviour
 
     int jobCount { get { return jobs.Count; } }
 
+    public bool Ended { get { return currentLevel == days.Length; } }
+
     event System.Action _onEnd = delegate {};
 
     public event System.Action OnEnd
