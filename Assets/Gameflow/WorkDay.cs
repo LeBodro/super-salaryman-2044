@@ -14,13 +14,11 @@ public class WorkDay
 
     [SerializeField] int heroCount;
 
+    public int HeroCount { get { return heroCount; } }
+
     public bool AddsJob { get { return addsJob; } }
     // this is used to know whether this work day adds a new job to the pool or not.
 
-    public int GetHeroCount()
-    {
-        return heroCount;
-    }
 
     public SuperHero CreateEncounter()
     {

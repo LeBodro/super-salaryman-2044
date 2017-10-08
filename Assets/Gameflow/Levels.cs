@@ -5,11 +5,13 @@ public class Levels : MonoBehaviour
 {
     [SerializeField] WorkDay[] days;
     [SerializeField] int maxJobCount;
+    [SerializeField] GameObject nextLevelInstruction;
 
     IList<Job> jobs = new List<Job>();
     public static SuperHero currentHero;
 
     int currentLevel = 0;
+    bool waitForNextLevelInput;
 
     int jobCount { get { return jobs.Count; } }
 
@@ -49,12 +51,12 @@ public class Levels : MonoBehaviour
     // get the next oppennant, or if the maximum opennent was done then go to the next day
     public void NextEncounter()
     {
-        Debug.Log(days[currentLevel].GetHeroCount());
+        Debug.Log(days[currentLevel].HeroCount);
 
-        if (days[currentLevel].GetHeroCount() == 0)
+        if (days[currentLevel].HeroCount == 0)
         {
             // we change towartd the new level
-            this.EndCurrent();
+            EndCurrent();
         }
         else
         {
@@ -69,9 +71,26 @@ public class Levels : MonoBehaviour
 
         // start the next level
         if (currentLevel < days.Length)
-            StartNext();
+        {   
+            waitForNextLevelInput = true;
+            if (nextLevelInstruction != null)
+                nextLevelInstruction.SetActive(true);
+        }
         else
+        {
             _onEnd();
+        }
+    }
+
+    void Update()
+    {
+        if (waitForNextLevelInput && Input.GetKeyDown(KeyCode.Space))
+        {
+            waitForNextLevelInput = false;
+            StartNext();
+            if (nextLevelInstruction != null)
+                nextLevelInstruction.SetActive(false);
+        }
     }
 
     public int GetCurrentJobCount()
