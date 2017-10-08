@@ -6,9 +6,16 @@ using UnityEngine.UI;
 public class Keyboard : MonoBehaviour
 {
     [SerializeField] Text up;
+    [SerializeField] Image upIcon;
+
     [SerializeField] Text right;
+    [SerializeField] Image rIcon;
+
     [SerializeField] Text down;
+    [SerializeField] Image dIcon;
+
     [SerializeField] Text left;
+    [SerializeField] Image lIcon;
 
     public void SetFrenchUI()
     {

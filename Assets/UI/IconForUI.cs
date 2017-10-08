@@ -12,12 +12,6 @@ public class IconForUI : MonoBehaviour {
     [SerializeField] Color emptyColor;
     [SerializeField] Color fullColor;
 
-    // TO DELETE once the sprite will be set for powers and fears
-    bool test = true;
-    [SerializeField] Sprite sp1;
-    [SerializeField] Sprite sp2;
-    // END PLACEHOLDERS
-
     public void HandleIcons(List<SuperPower> pow, List<Fear> fears)
     {
         ResetIcons();
