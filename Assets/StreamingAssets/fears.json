@@ -1,11 +1,28 @@
 {
-   "fears":[
-      "Phonophobie",
-      "Autophobie",
-      "Automysophobie",
-      "Lachanophobie",
-      "Hodophobie",
-      "Hoplophobie",
-      "Androphobie"
-   ]
+    "key":"phonophobie",
+    "name":"Phonophobie"
+}/
+{
+    "key":"autophobie",
+    "name":"Autophobie"
+}/
+{
+    "key":"automysophobie",
+    "name":"Automysophobie"
+}/
+{
+    "key":"lachanophobie",
+    "name":"Lachanophobie"
+}/
+{
+    "key":"hodophobie",
+    "name":"Hodophobie"
+}/
+{
+    "key":"hoplophobie",
+    "name":"Hoplophobie"
+}/
+{
+    "key":"androphobie",
+    "name":"Androphobie"
 }

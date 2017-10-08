@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JobData : MonoBehaviour {
+public class JobData
+{
+    public string key;
+    public string name;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public string[] acceptedPowers;
+    public string[] forbiddenFears;
 }

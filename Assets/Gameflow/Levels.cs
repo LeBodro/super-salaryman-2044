@@ -55,7 +55,7 @@ public class Levels : MonoBehaviour
                 jobs.Add(newJob);
             }
             
-            LogJob(newJob);        
+            LogJob(newJob);
         }
 
         // create the first encouter
