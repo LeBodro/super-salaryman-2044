@@ -79,13 +79,4 @@ public class IconForUI : MonoBehaviour {
             fearsIcons[i].color = emptyColor;
         }
     }
-
-    // Use this for initialization
-    void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
