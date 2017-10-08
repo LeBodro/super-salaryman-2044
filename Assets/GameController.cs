@@ -32,10 +32,6 @@ public class GameController : MonoBehaviour
 
         // start the first level
         levelsConfig.StartNext();
-
-        //dayTest = new WorkDay();
-        //dayTest.SelectJobs();
-        //currentHero = dayTest.CreateEncounter();
     }
 
     // METHODS

@@ -44,7 +44,7 @@ public class Levels : MonoBehaviour
         }
 
         // create the first encouter
-        currentHero = days[currentLevel].CreateEncounter();
+        this.NextEncounter();
     }
 
     // get the next oppennant, or if the maximum opennent was done then go to the next day
