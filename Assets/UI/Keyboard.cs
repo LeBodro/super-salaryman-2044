@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Keyboard
+public class Keyboard : MonoBehaviour
 {
     [SerializeField] Text up;
     [SerializeField] Text right;
@@ -25,16 +25,4 @@ public class Keyboard
         down.text = "S";
         left.text = "A";
     }
-
-    /*
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-    */
 }
