@@ -15,7 +15,6 @@ public class Job
         this.key = key;
         name = JobName;
 
-
         icon = Resources.Load<Sprite>(key);
         acceptedPowers = new List<SuperPower>();
         forbiddenFears = new List<Fear>();

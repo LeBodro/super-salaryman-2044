@@ -16,8 +16,8 @@ public class GameController : MonoBehaviour
     static Hat<Job> jobs;
 
     IDictionary<string, int> inputMapping = new Dictionary<string, int>();
-    IDictionary<string, int> frenchInputs = new Dictionary<string, int>{ { "z", 0 }, { "q", 1 }, { "s", 2 }, { "d", 3 } };
-    IDictionary<string, int> canadianInputs = new Dictionary<string, int>{ { "w", 0 }, { "a", 1 }, { "s", 2 }, { "d", 3 } };
+    IDictionary<string, int> frenchInputs = new Dictionary<string, int>{ { "z", 0 }, { "q", 1 }, { "s", 2 }, { "d", 3 }, { "x", 0 } };
+    IDictionary<string, int> canadianInputs = new Dictionary<string, int>{ { "w", 0 }, { "a", 1 }, { "s", 2 }, { "d", 3 }, { "x", 0 } };
 
     void Start()
     {
@@ -125,12 +125,35 @@ public class GameController : MonoBehaviour
 
     void ProcessKeyInput(string key, int jobId)
     {
-        if (Input.GetKeyDown(key) && levelsConfig.GetCurrentJobCount() > jobId)
+        if (Input.GetKeyDown(key))
         {
             aHeroWasChosen = true;
 
-            Job job = levelsConfig.KeyToJob(jobId);
-            isCompatible = job.IsCompatibleWith(levelsConfig.GetSuperHero());
+            // if we press the delete button
+            if (key.Equals("x"))
+            {                
+                // then we try for all the job
+                // by default we say, it's ok for the trash
+                isCompatible = true;
+
+                foreach (var input in inputMapping)
+                {
+                    Job job = levelsConfig.KeyToJob(jobId);
+                    // if there is a job compatible, then the trash is not ok -> iCompatible = False
+                    if (job.IsCompatibleWith(levelsConfig.GetSuperHero()))
+                    {
+                        isCompatible = false;
+                        break;
+                    }
+                }          
+
+            }
+            else if (levelsConfig.GetCurrentJobCount() > jobId)
+            {
+                // if it's a normal key
+                Job job = levelsConfig.KeyToJob(jobId);
+                isCompatible = job.IsCompatibleWith(levelsConfig.GetSuperHero());
+            }         
         }
     }
 
