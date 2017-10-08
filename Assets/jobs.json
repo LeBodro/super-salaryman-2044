@@ -1,0 +1,81 @@
+{
+   "jobs":[
+      {
+         "name":"Agent de paix",
+         "requiredPowers":[
+            "Contrôle de la Gravité",
+            "Télépathie"
+         ],
+         "forbiddenFears":[
+            "Hodophobie",
+            "Hoplophobie",
+            "Phonophobie",
+            "Androphobie"
+         ]
+      },
+      {
+         "name":"Exterminateur d’intellectuels",
+         "requiredPowers":[
+            "Corps Tranchant",
+            "Super Force",
+            "Voyageur Temporel"
+         ],
+         "forbiddenFears":[
+            "Automysophobie",
+            "Hoplophobie",
+            "Phonophobie",
+            "Androphobie"
+         ]
+      },
+      {
+         "name":"Thérapeute pour machos",
+         "requiredPowers":[
+            "Multibras",
+            "Super Force",
+            "Télépathie"
+         ],
+         "forbiddenFears":[
+            "Automysophobie",
+            "Lachanophobie",
+            "Androphobie"
+         ]
+      },
+      {
+         "name":"Cuisinier pour vegan",
+         "requiredPowers":[
+            "Corps Tranchant",
+            "Multibras",
+            "Super Vitesse"
+         ],
+         "forbiddenFears":[
+            "Automysophobie",
+            "Lachanophobie",
+            "Autophobie "
+         ]
+      },
+      {
+         "name":"DJ ",
+         "requiredPowers":[
+            "Multibras",
+            "Super Vitesse",
+            "Voyageur Temporel"
+         ],
+         "forbiddenFears":[
+            "Phonophobie",
+            "Hodophobie"
+         ]
+      },
+      {
+         "name":"Recycleur de déchets de l’espace",
+         "requiredPowers":[
+            "Corps Tranchant",
+            "Contrôle de la Gravité",
+            "Télépathie"
+         ],
+         "forbiddenFears":[
+            "Autophobie",
+            "Hodophobie"
+         ]
+      }
+   ]
+}
