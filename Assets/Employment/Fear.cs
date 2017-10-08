@@ -5,16 +5,21 @@ using UnityEngine;
 public class Fear
 {
     [SerializeField] string fearName;
-    [SerializeField] Texture2D icon;
+    [SerializeField] Sprite icon;
 
     public Fear(string name)
     {
         fearName = name;
     }
 
+    public void SetIcon(Sprite sprite)
+    {
+        icon = sprite;
+    }
+
     public string FearName { get { return fearName; } }
 
-    public Texture2D Icon { get { return icon; } }
+    public Sprite Icon { get { return icon; } }
 
     void Start()
     {

@@ -1,18 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SuperPower
 {
     string name;
-    Texture2D icon;
+    Sprite icon;
 
     public SuperPower(string name)
     {
         this.name = name;
     }
 
+    public void SetIcon(Sprite sprite)
+    {
+        icon = sprite;
+    }
+
     public string Power { get { return name; } }
 
-    public Texture2D Icon { get { return icon; } }
+    public Sprite Icon { get { return icon; } }
 }
