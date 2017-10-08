@@ -109,7 +109,7 @@ public class GameController : MonoBehaviour
         currentHero = dayTest.CreateEncounter();
     }
 
-    bool hasInput = false;
+    bool aHeroWasChosen = false;
     bool isCompatible = false;
     // Update is called once per frame
     void Update()
@@ -121,24 +121,22 @@ public class GameController : MonoBehaviour
             ProcessKeyInput(input.Key, input.Value);
         }
 
-        if (hasInput)
+        if (aHeroWasChosen)
         {
             if (isCompatible)
             {
                 gameAudio.clip = rightClip;
                 gameAudio.Play();
-                print("SUCCESS");
             }
             else
             {
                 gameAudio.clip = wrongClip;
                 gameAudio.Play();
-                print("WRONG JOB");
                 isWrong = true;
             }
             print("Next Encounter");
             currentHero = dayTest.CreateEncounter();
-            hasInput = false;
+            aHeroWasChosen = false;
         }
 
         // for red flash
@@ -157,7 +155,7 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(key) && dayTest.GetJobCount() > jobId)
         {
-            hasInput = true;
+            aHeroWasChosen = true;
             Job job = dayTest.KeyToJob(jobId);
             isCompatible = job.IsCompatibleWith(currentHero);
         }
