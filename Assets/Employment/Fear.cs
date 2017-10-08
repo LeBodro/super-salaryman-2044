@@ -15,6 +15,11 @@ public class Fear
         // TODO : icon from the given fileName
     }
 
+    public void SetIcon(Sprite sprite)
+    {
+        icon = sprite;
+    }
+
     public string FearName { get { return fearName; } }
 
     public Sprite Icon { get { return icon; } }

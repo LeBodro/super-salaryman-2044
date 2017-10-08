@@ -106,16 +106,17 @@ public class GameController : MonoBehaviour
             ProcessKeyInput(input.Key, input.Value);
         }
 
-        if (aHeroWasChosen)
+        if (levelsConfig.IsPlaying && aHeroWasChosen)
         {
             if (isCompatible)
             {
-                // maybe put it louder ?
                 CrackleAudio.SoundController.PlaySound("right");
+                levelsConfig.scoreManager.ScoreRightAnswer();
             }
             else
             {
                 wrong.Play();
+                levelsConfig.scoreManager.ScoreWrongAnswer();
             }
             print("Next Encounter");
             levelsConfig.NextEncounter();
