@@ -1,50 +1,47 @@
-﻿using System.Collections;
+﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class Levels : MonoBehaviour
 {
-    /* Cette classe a pour destin d'être sur un prefab.
-     * Ce prefab agira comme une config manuelle de niveaux pour faciliter le level design.
-     * On pourra faire différentes configs si on veut (mettons une par difficulté) et ultimement glisser cette config dans le gamecontroller
-     * pour qu'il s'en serve.
-     * */
-    [SerializeField] Job[] jobs;
     [SerializeField] WorkDay[] days;
     [SerializeField] int maxJobCount;
 
+    IList<Job> jobs = new List<Job>();
     public static SuperHero currentHero;
 
     int currentLevel = 0;
-    int jobCount = 0;
+
+    int jobCount { get { return jobs.Count; } }
+
+    event System.Action _onEnd = delegate {};
+
+    public event System.Action OnEnd
+    {
+        add { _onEnd += value; }
+        remove { _onEnd -= value; }
+    }
 
     public void StartNext()
     {
-        //starts next level
         if (days[currentLevel].AddsJob)
-        {
-            // add a job to pool            
-            Job job = GameController.PickJob();
+        {      
+            Job newJob = GameController.PickJob();
 
-            // replace a job if we are at the max
             if (jobCount == maxJobCount)
             {
-                // we just replace one of the job
-                int rand = Random.Range(0, maxJobCount + 1);
-
-                jobs[rand] = job;
-            } else
+                int replacedJob = Random.Range(0, jobCount);
+                jobs[replacedJob] = newJob;
+            }
+            else
             {
-                // we just add the job
-                jobs[jobCount] = job;
-                jobCount++;
+                jobs.Add(newJob);
             }
             
-            LogJob(job);        
+            LogJob(newJob);        
         }
 
         // create the first encouter
-        this.NextEncounter();
+        NextEncounter();
     }
 
     // get the next oppennant, or if the maximum opennent was done then go to the next day
@@ -56,7 +53,8 @@ public class Levels : MonoBehaviour
         {
             // we change towartd the new level
             this.EndCurrent();
-        } else
+        }
+        else
         {
             currentHero = days[currentLevel].CreateEncounter();
         }
@@ -68,7 +66,10 @@ public class Levels : MonoBehaviour
         currentLevel++;
 
         // start the next level
-        this.StartNext();
+        if (currentLevel < days.Length)
+            StartNext();
+        else
+            _onEnd();
     }
 
     public int GetCurrentJobCount()

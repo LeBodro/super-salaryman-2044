@@ -20,19 +20,18 @@ public class GameController : MonoBehaviour
     IDictionary<string, int> frenchInputs = new Dictionary<string, int>{ { "z", 0 }, { "q", 1 }, { "s", 2 }, { "d", 3 } };
     IDictionary<string, int> canadianInputs = new Dictionary<string, int>{ { "w", 0 }, { "a", 1 }, { "s", 2 }, { "d", 3 } };
 
-    // Use this for initialization
     void Start()
     {
-        dayTimer.Begin();
-        // create jobs, fears, powers
-        InitLists();
-
-        //initialisation logic
         inputMapping = frenchInputs;
         keyboard.SetFrenchUI();
 
+        // create jobs, fears, powers
+        InitLists();
+
         // start the first level
+        dayTimer.Begin();
         levelsConfig.StartNext();
+        levelsConfig.OnEnd += () => Debug.Log("END GAME"); // TODO: Pass endgame method as parameter instead of lambda debug
     }
 
     // METHODS
