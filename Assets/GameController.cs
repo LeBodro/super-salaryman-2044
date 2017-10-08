@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using System.Collections;
 
 public class GameController : MonoBehaviour
 {
@@ -30,6 +31,14 @@ public class GameController : MonoBehaviour
         // start the first level
         levelsConfig.StartNext();
         levelsConfig.OnEnd += EndGame; // TODO: Pass endgame method as parameter instead of lambda debug
+        StartCoroutine(DelayedPlayMusic());
+    }
+
+    IEnumerator DelayedPlayMusic()
+    {
+        yield return null;
+        yield return null;
+        CrackleAudio.SoundController.PlayMusic("main");
     }
 
     void EndGame()
