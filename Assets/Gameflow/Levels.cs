@@ -1,15 +1,27 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class Levels : MonoBehaviour
 {
     [SerializeField] WorkDay[] days;
     [SerializeField] int maxJobCount;
+    [SerializeField] GameObject nextLevelInstruction;
+
+    // for ui icons
+    [SerializeField] IconForUI iconManager;
+
+    // for counting score for each level
+    public ScoreManager scoreManager;
+
 
     IList<Job> jobs = new List<Job>();
     public static SuperHero currentHero;
 
     int currentLevel = 0;
+    bool isPlaying;
+
+    public bool IsPlaying { get { return isPlaying; } }
 
     int jobCount { get { return jobs.Count; } }
 
@@ -25,6 +37,10 @@ public class Levels : MonoBehaviour
 
     public void StartNext()
     {
+        isPlaying = true;
+        //reset score
+        scoreManager.ResetScore();
+
         if (days[currentLevel].AddsJob)
         {      
             Job newJob = GameController.PickJob();
@@ -49,16 +65,18 @@ public class Levels : MonoBehaviour
     // get the next oppennant, or if the maximum opennent was done then go to the next day
     public void NextEncounter()
     {
-        Debug.Log(days[currentLevel].GetHeroCount());
+        Debug.Log(days[currentLevel].HeroCount);
 
-        if (days[currentLevel].GetHeroCount() == 0)
+        if (days[currentLevel].HeroCount == 0)
         {
             // we change towartd the new level
-            this.EndCurrent();
+            EndCurrent();
         }
         else
         {
             currentHero = days[currentLevel].CreateEncounter();
+            // for ui icons
+            iconManager.HandleIcons(currentHero.GetPowers(), currentHero.GetFears());
         }
     }
 
@@ -69,9 +87,27 @@ public class Levels : MonoBehaviour
 
         // start the next level
         if (currentLevel < days.Length)
-            StartNext();
+        {   
+            isPlaying = false;
+            if (nextLevelInstruction != null)
+                nextLevelInstruction.SetActive(true);
+                
+        }
         else
+        {
             _onEnd();
+        }
+    }
+
+    void Update()
+    {
+        if (!isPlaying && Input.GetKeyDown(KeyCode.Space))
+        {
+            isPlaying = true;
+            StartNext();
+            if (nextLevelInstruction != null)
+                nextLevelInstruction.SetActive(false);
+        }
     }
 
     public int GetCurrentJobCount()

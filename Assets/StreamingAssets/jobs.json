@@ -1,0 +1,89 @@
+{
+    "key":"paix",
+    "name":"Agent de paix",
+    "icon":"paix.png",
+    "acceptedPowers":[
+    "gravite",
+    "telepathie"
+    ],
+    "forbiddenFears":[
+    "hodophobie",
+    "hoplophobie",
+    "phonophobie",
+    "androphobie"
+    ]
+}/
+{
+    "key":"intellectuels",
+    "name":"Exterminateur d'intellectuels",
+    "icon":"intellectuels.png",
+    "acceptedPowers":[
+    "tranchant",
+    "force",
+    "temporel"
+    ],
+    "forbiddenFears":[
+    "automysophobie",
+    "hoplophobie",
+    "phonophobie",
+    "androphobie"
+    ]
+}/
+{
+    "key":"therapeute",
+    "name":"Thérapeute pour machos",
+    "icon":"therapeute.png",
+    "acceptedPowers":[
+    "multibras",
+    "force",
+    "telepathie"
+    ],
+    "forbiddenFears":[
+    "automysophobie",
+    "lachanophobie",
+    "androphobie"
+    ]
+}/
+{
+    "key":"cuisinier",
+    "name":"Cuisinier pour vegan",
+    "icon":"cuisinier.png",
+    "acceptedPowers":[
+    "tranchant",
+    "multibras",
+    "vitesse"
+    ],
+    "forbiddenFears":[
+    "automysophobie",
+    "lachanophobie",
+    "autophobie"
+    ]
+}/
+{
+    "key":"dj",
+    "name":"DJ ",
+    "icon":"dj.png",
+    "acceptedPowers":[
+    "multibras",
+    "vitesse",
+    "temporel"
+    ],
+    "forbiddenFears":[
+    "phonophobie",
+    "hodophobie"
+    ]
+}/
+{
+    "key":"recycleur",
+    "name":"Recycleur de déchets de l'espace",
+    "icon":"recycleur.png",
+    "acceptedPowers":[
+    "tranchant",
+    "gravite",
+    "telepathie"
+    ],
+    "forbiddenFears":[
+    "autophobie",
+    "hodophobie"
+    ]
+}

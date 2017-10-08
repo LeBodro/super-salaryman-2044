@@ -41,41 +41,53 @@ public class GameController : MonoBehaviour
 
     void InitLists()
     {
-        listOfPowers = new SuperPower[5];
-        listOfFears = new Fear[5];
+        // Get the data from the JSON File
+        var json = new GameData();
+        List<PowerData> listofPowersData = json.LoadPowersData();        
+        List<FearData> listOfFearsData = json.LoadFearsData();        
+        List<JobData> listOfJobsData = json.LoadJobData();
+
+        // to key the position of each powers in the tab, using the key
+        Dictionary<string, int> keyToIndexOfPower = new Dictionary<string, int>();
+        Dictionary<string, int> keyToIndexOfFear = new Dictionary<string, int>();
+
+        // Create all the lists
+        listOfPowers = new SuperPower[listofPowersData.Count];
+        listOfFears = new Fear[listOfFearsData.Count];
         jobs = new Hat<Job>();
 
-        listOfPowers[0] = new SuperPower("Télépathie");
-        listOfPowers[1] = new SuperPower("Invisibilité");
-        listOfPowers[2] = new SuperPower("Vole");
-        listOfPowers[3] = new SuperPower("Gèle");
-        listOfPowers[4] = new SuperPower("Embrasement");
+        // Fill the list with the data
+        int i = 0;
+        foreach (var powerData in listofPowersData)
+        { 
+            listOfPowers[i] = new SuperPower(powerData.key, powerData.name, powerData.icon);
+            keyToIndexOfPower.Add(powerData.key, i);
+            i++;
+        }
 
-        listOfFears[0] = new Fear("Achluophobie");
-        listOfFears[1] = new Fear("Agoraphobie");
-        listOfFears[2] = new Fear("Apéirophobie");
-        listOfFears[3] = new Fear("Arithmophobie");
-        listOfFears[4] = new Fear("Athazagoraphobie");
+        i = 0;
+        foreach (var fearData in listOfFearsData)
+        {
+            listOfFears[i] = new Fear(fearData.key, fearData.name, fearData.icon);
+            keyToIndexOfFear.Add(fearData.key, i);
+            i++;
+        }
 
-        Job job1 = new Job("A");
-        job1.AddPower(listOfPowers[2]);
-        job1.AddFear(listOfFears[3]);
-        jobs.Put(job1);
+        foreach (var jobData in listOfJobsData)
+        {
+            Job job = new Job(jobData.key, jobData.name, jobData.icon);
+            foreach (var powerKey in jobData.acceptedPowers)
+            {
+                job.AddPower(listOfPowers[keyToIndexOfPower[powerKey]]);
+            }
 
-        Job job2 = new Job("B");
-        job2.AddPower(listOfPowers[0]);
-        job2.AddFear(listOfFears[2]);
-        jobs.Put(job2);
+            foreach (var fearKey in jobData.forbiddenFears)
+            {
+                job.AddFear(listOfFears[keyToIndexOfFear[fearKey]]);
+            }
 
-        Job job3 = new Job("C");
-        job2.AddPower(listOfPowers[1]);
-        job2.AddFear(listOfFears[0]);
-        jobs.Put(job3);
-
-        Job job4 = new Job("D");
-        job2.AddPower(listOfPowers[1]);
-        job2.AddFear(listOfFears[0]);
-        jobs.Put(job3);
+            jobs.Put(job);
+        }
     }
 
     bool aHeroWasChosen = false;
@@ -94,16 +106,17 @@ public class GameController : MonoBehaviour
             ProcessKeyInput(input.Key, input.Value);
         }
 
-        if (aHeroWasChosen)
+        if (levelsConfig.IsPlaying && aHeroWasChosen)
         {
             if (isCompatible)
             {
-                // maybe put it louder ?
                 CrackleAudio.SoundController.PlaySound("right");
+                levelsConfig.scoreManager.ScoreRightAnswer();
             }
             else
             {
                 wrong.Play();
+                levelsConfig.scoreManager.ScoreWrongAnswer();
             }
             print("Next Encounter");
             levelsConfig.NextEncounter();
