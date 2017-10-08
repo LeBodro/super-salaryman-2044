@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class Levels : MonoBehaviour
@@ -6,6 +7,10 @@ public class Levels : MonoBehaviour
     [SerializeField] WorkDay[] days;
     [SerializeField] int maxJobCount;
     [SerializeField] GameObject nextLevelInstruction;
+
+    // for ui icons
+    [SerializeField] IconForUI iconManager;
+
 
     IList<Job> jobs = new List<Job>();
     public static SuperHero currentHero;
@@ -61,6 +66,8 @@ public class Levels : MonoBehaviour
         else
         {
             currentHero = days[currentLevel].CreateEncounter();
+            // for ui icons
+            iconManager.HandleIcons(currentHero.GetPowers(), currentHero.GetFears());
         }
     }
 

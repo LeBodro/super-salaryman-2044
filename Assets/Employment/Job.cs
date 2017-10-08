@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Job
 {
     [SerializeField] string name;
-    [SerializeField] Texture2D icon;
+    [SerializeField] Sprite icon;
     [SerializeField] List<SuperPower> acceptedPowers;
     [SerializeField] List<Fear> forbiddenFears;
 
