@@ -16,35 +16,30 @@ public class GameDataTest
     public void CanLoadGameData()
     {
         var json = new GameData();
-        Assert.DoesNotThrow(() => json.LoadGameData("powers.json"));
+        Assert.DoesNotThrow(() => json.LoadJobData());
     }
 
     [Test]
-    public void ThrowsOnInvalidFileName()
+    public void ReturnsAListOfJobs()
     {
         var json = new GameData();
-        Assert.Throws<System.ArgumentException>(() => json.LoadGameData("invalid name |!/"));
-    }
+        var list = json.LoadJobData();
 
-    [Test]
-    public void ReturnsAListOfPowers()
-    {
-        var json = new GameData();
-        var list = json.LoadGameData("powers.json");
-
-        Assert.IsInstanceOf<List<PowerData>>(list);
+        Assert.IsInstanceOf<List<JobData>>(list);
         Assert.GreaterOrEqual(list.Count, 2);
     }
 
     [Test]
-    public void ReturnsAdequatePowers()
+    public void ReturnsAdequateJobs()
     {
         var json = new GameData();
-        var list = json.LoadGameData("powers.json");
+        var list = json.LoadJobData();
 
         Debug.Log(list[0].name);
+        Debug.Log(list[0].icon);
+        Debug.Log(list[0].acceptedPowers[0]);
 
-        Assert.AreEqual("Super Force", list[0].name);
-        Assert.AreEqual("force", list[0].key);
+        //Assert.AreEqual("Super Force", list[0].name);
+        //Assert.AreEqual("force", list[0].key);
     }
 }

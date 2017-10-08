@@ -1,41 +1,35 @@
-
 {
     "key":"force",
     "name":"Super Force",
     "icon":"force.png"
 }/
 {
-    "key":"force",
+    "key":"vitesse",
     "name":"Super Vitesse",
     "icon":"force.png"
 }/
 {
-    "key":"force",
+    "key":"tranchant",
     "name":"Corps tranchant",
     "icon":"force.png"
 }/
 {
-    "key":"force",
-    "name":"Super Force",
+    "key":"telepathie",
+    "name":"TÃ©lÃ©pathie",
     "icon":"force.png"
 }/
 {
-    "key":"force",
-    "name":"Télépathie",
-    "icon":"force.png"
-}/
-{
-    "key":"force",
+    "key":"multibras",
     "name":"Multibras",
     "icon":"force.png"
 }/
 {
-    "key":"force",
+    "key":"temporel",
     "name":"Voyageur temporel",
     "icon":"force.png"
 }/
 {
-    "key":"force",
-    "name":"Contrôle de la Gravité",
+    "key":"gravite",
+    "name":"ContrÃ´le de la GravitÃ©",
     "icon":"force.png"
 }

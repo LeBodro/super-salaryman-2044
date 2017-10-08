@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Fear
 {
+    string key;
     string fearName;
     Sprite icon;
 
-    public Fear(string name)
+    public Fear(string key, string name, string icon)
     {
+        this.key = key;
         fearName = name;
+        // TODO : icon from the given fileName
     }
 
     public void SetIcon(Sprite sprite)
@@ -25,4 +28,6 @@ public class Fear
     {
         Debug.LogError("Fears should stay prefabs and never be instantiated.");
     }
+
+    public string GetKey() { return key;  }
 }

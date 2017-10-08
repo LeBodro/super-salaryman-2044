@@ -4,17 +4,23 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Job
 {
-    [SerializeField] string name;
-    [SerializeField] Sprite icon;
-    [SerializeField] List<SuperPower> acceptedPowers;
-    [SerializeField] List<Fear> forbiddenFears;
+    string key;
+    string name;
+    Sprite icon;
+    List<SuperPower> acceptedPowers;
+    List<Fear> forbiddenFears;
 
-    public Job(string JobName)
+    public Job(string key, string JobName, string icon)
     {
+        this.key = key;
         name = JobName;
+
+        //TODO : icon gestion same as the other
         acceptedPowers = new List<SuperPower>();
         forbiddenFears = new List<Fear>();
     }
+
+    public string GetKey() { return key; }
 
     public void AddPower(SuperPower power)
     {
